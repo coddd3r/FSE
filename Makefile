@@ -1,7 +1,7 @@
 #web server make file 
 # httpd:
 # 	gcc httpd.c -o 	rundaemon			
-BINARY=r
+BINARY=runner
 CODEDIRS=.
 INCDIRS=. #can be list
 

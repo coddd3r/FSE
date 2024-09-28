@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     // if not enough args print error return -1
     if (argc < 3)
     {
-        fprintf(stderr, "Please enter inout and output files \n Usage: %s <in_file> <out_file>", *argv);
+        fprintf(stderr, "Please enter inout and output files \n Usage: %s <in_file> <out_file>\n", *argv);
         return -1;
     }
 
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 
     int8 *pad8 = secure_rand(2);
     pad_size = *(int16 *)pad8;
-    printf("padsize: %d", (int)pad_size);
+    printf("padsize: %d\n", (int)pad_size);
 
     close(infd);
     close(outfd);
