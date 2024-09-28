@@ -1,0 +1,1 @@
+a file system encryption library based on arcfour encryption(separate library)
