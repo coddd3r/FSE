@@ -1,5 +1,6 @@
 #include "fse.h"
 #include "secure_rand.h"
+#include "read_key.h"
 
 int main(int argc, char *argv[])
 {
@@ -8,8 +9,8 @@ int main(int argc, char *argv[])
     int8 *out_file;
     int infd;
     int outfd;
-    // int8 *key;
-    // int16 key_size;
+    int8 *key;
+    int16 key_size;
     int16 pad_size;
     // int8 *pad_size8;
     // int8 *padding;
@@ -38,13 +39,13 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    // key = readkey("ENTER KEY:");
-    // assert(key);
-    // key_size = (int16)strlen((char *) key);
-
+    key = read_key("ENTER KEY:");
+    assert(key);
+    key_size = (int16)strlen((char *)key);
+    key_size += 0;
     int8 *pad8 = secure_rand(2);
     pad_size = *(int16 *)pad8;
-    printf("padsize: %d\n", (int)pad_size);
+    // printf("padsize: %d\n", (int)pad_size);
 
     close(infd);
     close(outfd);

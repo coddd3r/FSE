@@ -15,10 +15,11 @@
 #include <errno.h>
 #include <assert.h>
 #include <sys/random.h>
+#include <termios.h>
 
-
+void change_echo(bool);                 
 int8 *secure_rand(int16);
-int8 *readkey(int8*);//reads key from user input
+int8 *read_key(char *); // reads key from user input
 int main(int, char **);
 
 #endif // !FSE_H

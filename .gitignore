@@ -3,3 +3,6 @@ test*
 *.o
 *.txt
 runner
+*.out
+outfile*
+infile*
