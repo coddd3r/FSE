@@ -12,8 +12,6 @@ int main(int argc, char *argv[])
     int8 *key;
     int16 key_size;
     int16 pad_size;
-    // int8 *pad_size8;
-    // int8 *padding;
 
     // if not enough args print error return -1
     if (argc < 3)
@@ -45,10 +43,9 @@ int main(int argc, char *argv[])
     key_size += 0;
     int8 *pad8 = secure_rand(2);
     pad_size = *(int16 *)pad8;
-    // printf("padsize: %d\n", (int)pad_size);
 
     close(infd);
     close(outfd);
-    free(pad8);
+    free(pad8);//malloced in secure_rand
     return 0;
 }

@@ -2,24 +2,18 @@
 #ifndef CHANGE_ECHO
 
 #include "fse.h"
-void change_echo(bool enabled)
-{
-    /*int tcgetattr(int fd, struct termios *termios_p);
+void change_echo(bool enable)
+{   
+    struct termios term;
+    // t = (struct termios *)malloc(sizeof(struct termios));
+    tcgetattr(STDIN_FILENO, &term);
 
-       int tcsetattr(int fd, int optional_actions,
-                     const struct termios *termios_p);*/
-    /*
-            
-        struct termios old_tio, new_tio;
-        tcgetattr(STDIN_FILENO, &old_tio);
-        new_tio = old_tio;
-        new_tio.c_lflag &= ~(ICANON | ECHO);
-        tcsetattr(STDIN_FILENO, TCSANOW, &new_tio);
-    */
-    
-    struct termios *t;
-    t = (struct termios *)malloc(sizeof(struct termios));
-    tcgetattr(0, t);
+    if (enable)
+        term.c_lflag |= ECHO; // will enable echo
+    else
+        term.c_lflag &= ~ECHO; // will set all bits to zero, disable echo
+
+    tcsetattr(STDIN_FILENO, 0, &term);
 }
 
 #endif // !CHANGE_ECHO

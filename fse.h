@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdbool.h>
 #include <unistd.h>
-#include <arcfour.h>
 #include <stdint.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -16,6 +16,8 @@
 #include <assert.h>
 #include <sys/random.h>
 #include <termios.h>
+
+#include <arcfour.h>
 
 void change_echo(bool);                 
 int8 *secure_rand(int16);
