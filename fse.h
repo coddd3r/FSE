@@ -22,6 +22,10 @@
 void change_echo(bool);                 
 int8 *secure_rand(int16);
 int8 *read_key(char *); // reads key from user input
+void printbin(int8 *, const int16);
+int8 *read_file(FILE *infd);
+void encrypt_file(char *, char *, Arcfour *, char *, char *);
+
 int main(int, char **);
 
 #endif // !FSE_H
