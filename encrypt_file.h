@@ -22,12 +22,12 @@ void encrypt_file(char *in_file, char *out_file, Arcfour *rc4, char *r_opt, char
     from = (int8 *)malloc(sizeof(char) * (length + 1));
     size_t read_res = fread(from, sizeof(int8), length, f);
 
-    // from = read_file(infd);
     if (read_res < 2)
     {
         printf("READ ERROR");
         exit(1);
     }
+    
     if (strcmp(r_opt, "rb") == 0)
     {
         printf("BINARY INPUT:");
@@ -35,7 +35,6 @@ void encrypt_file(char *in_file, char *out_file, Arcfour *rc4, char *r_opt, char
     }
     else
         printf("ORG TEXT ' %s '\n", from);
-    // int16 stext = (int16)strlen(from);
     int16 stext = length;
     encrypted = rc4encrypt(rc4, (int8 *)from, stext);
     if (strcmp(r_opt, "rb") == 0)
@@ -46,11 +45,13 @@ void encrypt_file(char *in_file, char *out_file, Arcfour *rc4, char *r_opt, char
         printbin(encrypted, length);
     }
 
-    rc4uninit(rc4);
 
     FILE *output_file_p = fopen(out_file, w_opt);
     size_t w_res = fwrite(encrypted, sizeof(int8), stext, output_file_p);
     printf("num bytes written:%d \n", (int)w_res);
+    
+    rc4uninit(rc4);
     free(from);
+    fclose(f);
 }
 #endif

@@ -4,7 +4,6 @@
 #include "read_file.h"
 #include "encrypt_file.h"
 
-
 void printbin(int8 *text, const int16 size)
 {
     int16 i;
@@ -36,7 +35,7 @@ int main(int argc, char *argv[])
 
     if (argc < 3)
     {
-        fprintf(stderr, "Please enter inout and output files \n Usage: %s <in_file> <out_file>\n", *argv);
+        fprintf(stderr, "Please enter input and output files \n Usage: %s <in_file> <out_file>\n", *argv);
         return -1;
     }
 
@@ -82,6 +81,11 @@ int main(int argc, char *argv[])
     int8 *pad8 = secure_rand(2);
     pad_size = *(int16 *)pad8;
 
+    // FILE *example_file = fopen("example.txt", "wb");
+    printf("padding:");
+    printbin(pad8, 2);
+    printf("padsize:%d\n", pad_size);
+    exit(0);
     printf("initializing encryptions...");
     fflush(stdout);
     rc4 = rc4init((int8 *)key, (int16)(key_size));
@@ -95,4 +99,5 @@ int main(int argc, char *argv[])
     free(pad8); // malloced in secure_rand
     // free(from); // malloced in read file
     return 0;
+    
 }

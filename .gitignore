@@ -6,3 +6,4 @@ runner
 *.out
 outfile*
 infile*
+example*
