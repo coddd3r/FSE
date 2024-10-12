@@ -14,8 +14,8 @@
 #include <assert.h>
 #include <errno.h>
 #include <assert.h>
-#include <sys/random.h>
 #include <termios.h>
+#include <sys/random.h>
 
 #include <arcfour.h>
 

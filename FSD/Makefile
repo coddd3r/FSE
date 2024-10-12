@@ -3,7 +3,7 @@
 # 	gcc httpd.c -o 	rundaemon			
 BINARY=runner
 CODEDIRS=.
-INCDIRS=. FSE_INCLUDE #can be list
+INCDIRS=. FSD_INCLUDE #can be list
 
 CC=gcc
 OPT=-O	
